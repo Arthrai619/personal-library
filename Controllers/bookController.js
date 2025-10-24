@@ -1,6 +1,6 @@
 // controllers/bookController.js (assuming you have a POST handler here)
 
-const Book = require("../models/Book"); // Ensure your model is imported
+const Book = require("../Models/Book"); // Ensure your model is imported
 // ... other imports
 
 // @desc    Add a book to the user's library and check for duplicates
@@ -45,3 +45,4 @@ exports.addBookToLibrary = async (req, res) => {
         return res.status(500).json({ message: "Server error during book creation.", error: error.message });
     }
 };
+
