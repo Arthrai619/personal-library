@@ -1,8 +1,5 @@
-const Book = require("../models/Book");
+const Book = require("../Models/Book");
 
-// @desc    Create a new book (updated with duplicate check)
-// @route   POST /api/books
-// @access  Private
 exports.createBook = async (req, res) => {
     // Destructure required fields including googleBookId for duplicate check
     const { title, author, coverImage, googleBookId } = req.body;
@@ -47,9 +44,7 @@ exports.createBook = async (req, res) => {
     }
 };
 
-// @desc    Get all books for the logged-in user
-// @route   GET /api/books
-// @access  Private
+
 exports.getBook = async (req, res) => {
     try {
         const data = await Book.find({ user: req.user.id });
@@ -59,9 +54,7 @@ exports.getBook = async (req, res) => {
     }
 };
 
-// @desc    Update a book's properties
-// @route   PUT /api/books/:id
-// @access  Private
+
 exports.updateBook = async (req, res) => {
     try {
         const bookId = req.params.id;
@@ -107,3 +100,4 @@ exports.deleteBook = async (req, res) => {
         return res.status(500).json({ errors: true, message: error.message });
     }
 };
+
