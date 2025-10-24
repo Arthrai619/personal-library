@@ -10,6 +10,10 @@ const bookSchema = new mongoose.Schema({
         type:String,
         required:[true,"Please add Book Title"]
     },
+    googleBookId: { 
+        type: String,
+        required: true,
+    },
     author:{
         type:String,
         required:[true,"Please add Book Author"]
@@ -34,5 +38,8 @@ const bookSchema = new mongoose.Schema({
         default:0
     }
 },{timestamps:true})
+
+bookSchema.index({ user: 1, googleBookId: 1 }, { unique: true });
+
 
 module.exports = mongoose.model("Book",bookSchema)
